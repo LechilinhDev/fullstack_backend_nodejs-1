@@ -1,11 +1,18 @@
 const express = require('express')
 const app = express()
-const port = 3000
+require('dotenv').config();
+const configViewEngine = require('./src/config/viewEngine');
+const getHomePage = require('./src/routes/web');
+// const path = require('path');
+const port = process.env.PORT || 8080;
+const hostName = process.env.HOST_NAME;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+// config view engine and static file
+configViewEngine(app);
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.use('/', getHomePage)
+
+
+app.listen(port, hostName, () => {
+    console.log(`Example app listening on port ${port}---${hostName}`)
 })
