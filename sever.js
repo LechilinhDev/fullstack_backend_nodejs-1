@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
 require('dotenv').config();
+// config req.body
 
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
 
 const configViewEngine = require('./src/config/viewEngine');
 const webRoutes = require('./src/routes/web');

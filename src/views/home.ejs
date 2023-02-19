@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CRUD Home page</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/createUser">Create User</a>
+        <a href="/about">About</a>
+
+    </div>
+    <!-- <h1>hello template engine</h1>
+    <img class="banner" src="/images/AL.png" alt="full stack website with nodejs and react!" /> -->
+    <h1 class="title-table">All Users</h1>
+
+
+    <table id="customers">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Action</th>
+        </tr>
+        <% for (let i=0; i < listUser.length; i++) { %>
+            <tr>
+                <td>
+                    <%= listUser[i].ID %>
+                </td>
+                <td>
+                    <%= listUser[i].email %>
+                </td>
+                <td>
+                    <%= listUser[i].name %>
+                </td>
+                <td>
+                    <%= listUser[i].city %>
+                </td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <% } %>
+
+
+    </table>
+
+
+
+
+</body>
+
+</html>
