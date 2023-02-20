@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+
 const configViewEngine = (app) => {
 
     // config template engine
@@ -7,6 +8,7 @@ const configViewEngine = (app) => {
     // config static file
     // app.use(express.static(path.join(__dirname, 'src/public')));
     app.use(express.static('src/public'));
+
 }
 
 module.exports = configViewEngine;

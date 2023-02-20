@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>CRUD Home page</title>
 </head>
 
@@ -13,7 +14,7 @@
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/createUser">Create User</a>
-        <a href="/about">About</a>
+        <a href="/updateUser">About</a>
 
     </div>
     <!-- <h1>hello template engine</h1>
@@ -29,26 +30,28 @@
             <th>City</th>
             <th>Action</th>
         </tr>
-        <% for (let i=0; i < listUser.length; i++) { %>
+
+        <% listUser.forEach(function(user) { %>
             <tr>
                 <td>
-                    <%= listUser[i].ID %>
+                    <%= user.ID %>
                 </td>
                 <td>
-                    <%= listUser[i].email %>
+                    <%= user.email %>
                 </td>
                 <td>
-                    <%= listUser[i].name %>
+                    <%= user.name %>
                 </td>
                 <td>
-                    <%= listUser[i].city %>
+                    <%= user.city %>
                 </td>
                 <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <a href="/updateUser/<%= user.ID %>"><i class="fa fa-edit"
+                            style="font-size:20px;color:green"></i></a>
+                    <button><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
                 </td>
             </tr>
-            <% } %>
+            <% }); %>
 
 
     </table>

@@ -86,6 +86,7 @@ input[type=submit]:hover {
     border-collapse: collapse;
     width: 99%;
     margin: 0 auto;
+    margin-bottom: 25px;
 }
 
 .title-table {
@@ -114,3 +115,5 @@ input[type=submit]:hover {
     background-color: #04AA6D;
     color: white;
 }
+
+/* font awsome */

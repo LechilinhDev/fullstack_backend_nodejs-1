@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/createUser">Create User</a>
+        <a href="/updateUser">About</a>
+
+    </div>
+    <div class="form-add-user">
+        <h3 class="title-form">Update A User</h3>
+        <%= JSON.stringify(userUpdate) %>
+            <form action="/addUser" method="post">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email..">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name..">
+
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Your City..">
+
+                <input type="submit" value="Submit">
+            </form>
+    </div>
+</body>
+
+</html>

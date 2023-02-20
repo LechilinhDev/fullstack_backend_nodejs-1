@@ -13,6 +13,13 @@ const addNewUser = async (req, res) => {
     console.log('>>> check reequets ', results)
 }
 
+const getUserById = async (req, res) => {
+    let id = req.params.id;
+
+    const [results, fields] = await connection.query(`SELECT * FROM Users WHERE id=?`, [id]);
+    console.log('>>>>check id', results)
+}
+
 module.exports = {
-    getAllUser, addNewUser
+    getAllUser, addNewUser, getUserById
 }
