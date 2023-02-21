@@ -117,3 +117,6 @@ input[type=submit]:hover {
 }
 
 /* font awsome */
+input.dnone {
+    display: none;
+}

@@ -5,21 +5,37 @@ const getAllUser = async () => {
 }
 const addNewUser = async (req, res) => {
     let { email, name, city } = req.body;
+
+
     let [results, fields] = await connection.query(
         `
         INSERT INTO Users (email,name,city) VALUES(?,?,?)
         `, [email, name, city]
     )
-    console.log('>>> check reequets ', results)
+
+
+
 }
 
-const getUserById = async (req, res) => {
-    let id = req.params.id;
+const getUserById = async (id) => {
+
 
     const [results, fields] = await connection.query(`SELECT * FROM Users WHERE id=?`, [id]);
-    console.log('>>>>check id', results)
+    let user = results && results.length > 0 ? results[0] : {};
+    return user;
 }
+const updateUserById = async (req, res) => {
+    let { email, name, city, userId } = req.body;
 
+    let [results, fields] = await connection.query(
+        `
+        UPDATE Users
+        SET email = ?, name = ?, city =?
+        WHERE Id = ?;
+        `, [email, name, city, userId]
+    )
+
+}
 module.exports = {
-    getAllUser, addNewUser, getUserById
+    getAllUser, addNewUser, getUserById, updateUserById
 }
