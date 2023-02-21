@@ -120,3 +120,13 @@ input[type=submit]:hover {
 input.dnone {
     display: none;
 }
+
+.action-form {
+    display: flex;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}

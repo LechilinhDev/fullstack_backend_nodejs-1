@@ -46,9 +46,15 @@
                     <%= user.city %>
                 </td>
                 <td>
-                    <a href="/updateUser/<%= user.ID %>"><i class="fa fa-edit"
-                            style="font-size:20px;color:green"></i></a>
-                    <button><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
+                    <div class="action-form">
+                        <a href="/updateUser/<%= user.ID %>"><i class="fa fa-edit"
+                                style="font-size:20px;color:green;padding-right: 5px;"></i></a>
+                        <form action="/deleteUser/<%= user.ID %>" method="post">
+                            <button><i class="fa fa-trash" style="font-size:20px;color:red"></i></button>
+                        </form>
+
+                    </div>
+
                 </td>
             </tr>
             <% }); %>

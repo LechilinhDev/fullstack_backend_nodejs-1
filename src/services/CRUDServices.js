@@ -36,6 +36,15 @@ const updateUserById = async (req, res) => {
     )
 
 }
+const handleDeleteUser = async (req, res) => {
+    let id = req.body.userId;
+
+    let [results, fields] = await connection.query(
+        `
+        DELETE FROM Users  WHERE ID =?
+        `, [id]
+    )
+}
 module.exports = {
-    getAllUser, addNewUser, getUserById, updateUserById
+    getAllUser, addNewUser, getUserById, updateUserById, handleDeleteUser
 }
