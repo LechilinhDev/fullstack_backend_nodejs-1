@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 require('dotenv').config();
 // config req.body
-
+const connection = require('./src/config/database')
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // for form data
 
@@ -17,10 +17,22 @@ configViewEngine(app);
 
 app.use('/', webRoutes);
 
+//test conectio
+(async () => {
+    try {
+        await connection();
+        app.listen(port, hostName, () => {
+            console.log(`Example app listening on port ${port}---${hostName}`)
+        })
+    } catch (error) {
+        console.log('Connection to DB error', error);
+    }
+
+})()
 
 
 
 
-app.listen(port, hostName, () => {
-    console.log(`Example app listening on port ${port}---${hostName}`)
-})
+
+
+
