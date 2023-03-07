@@ -3,7 +3,8 @@ const { getAllUser, addNewUser, getUserById, updateUserById, handleDeleteUser } 
 const getHomePage = async (req, res) => {
 
     // res.send(JSON.stringify(rows))
-    let results = await getAllUser();
+    let results = await getAllUser(req, res);
+
 
     return res.render('home.ejs', { listUser: results })
 
@@ -58,7 +59,6 @@ const updateUser = async (req, res) => {
 const deleteuser = async (req, res) => {
     let id = req.params.id;
     let results = await getUserById(id);
-
     return res.render('deleteUser.ejs', { deleteUser: results });
 }
 const postHandleDeleteuser = async (req, res) => {

@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 require('dotenv').config();
 // config req.body
 const connection = require('./src/config/database')
@@ -17,7 +18,8 @@ configViewEngine(app);
 
 app.use('/', webRoutes);
 
-//test conectio
+//test conection
+
 (async () => {
     try {
         await connection();

@@ -1,17 +1,20 @@
 const connection = require('../config/database');
+const User = require('../models/users');
 const getAllUser = async () => {
-    const [results, fields] = await connection.query("SELECT * FROM Users");
+    const results = await User.find({})
+    console.log(results)
     return results;
 }
 const addNewUser = async (req, res) => {
     let { email, name, city } = req.body;
 
-
-    let [results, fields] = await connection.query(
-        `
-        INSERT INTO Users (email,name,city) VALUES(?,?,?)
-        `, [email, name, city]
-    )
+    await User.create({
+        email,
+        name,
+        city
+    }).then(result => {
+        console.log(result)
+    })
 
 
 
@@ -20,31 +23,22 @@ const addNewUser = async (req, res) => {
 const getUserById = async (id) => {
 
 
-    const [results, fields] = await connection.query(`SELECT * FROM Users WHERE id=?`, [id]);
-    let user = results && results.length > 0 ? results[0] : {};
-    return user;
+    const results = await User.findById(id).exec();
+
+    return results;
 }
 const updateUserById = async (req, res) => {
     let { email, name, city, userId } = req.body;
 
-    let [results, fields] = await connection.query(
-        `
-        UPDATE Users
-        SET email = ?, name = ?, city =?
-        WHERE Id = ?;
-        `, [email, name, city, userId]
-    )
+    await User.updateOne({ email, name, city, userId })
 
 }
-const handleDeleteUser = async (req, res) => {
-    let id = req.body.userId;
+const
+    handleDeleteUser = async (req, res) => {
+        let id = req.body.userId;
 
-    let [results, fields] = await connection.query(
-        `
-        DELETE FROM Users  WHERE ID =?
-        `, [id]
-    )
-}
+        await User.deleteOne({ id: id });
+    }
 module.exports = {
     getAllUser, addNewUser, getUserById, updateUserById, handleDeleteUser
 }
