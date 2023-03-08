@@ -1,4 +1,4 @@
-const connection = require('../config/database');
+
 const User = require('../models/users');
 const getAllUser = async () => {
     const results = await User.find({})
@@ -15,9 +15,6 @@ const addNewUser = async (req, res) => {
     }).then(result => {
         console.log(result)
     })
-
-
-
 }
 
 const getUserById = async (id) => {
@@ -33,12 +30,11 @@ const updateUserById = async (req, res) => {
     await User.updateOne({ email, name, city, userId })
 
 }
-const
-    handleDeleteUser = async (req, res) => {
-        let id = req.body.userId;
+const handleDeleteUser = async (req, res) => {
+    let id = req.body.userId;
 
-        await User.deleteOne({ id: id });
-    }
+    await User.deleteOne({ id: id });
+}
 module.exports = {
     getAllUser, addNewUser, getUserById, updateUserById, handleDeleteUser
 }

@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true })) // for form data
 
 const configViewEngine = require('./src/config/viewEngine');
 const webRoutes = require('./src/routes/web');
+const APIRouter = require('./src/routes/api')
 // const path = require('path');
 const port = process.env.PORT || 8080;
 const hostName = process.env.HOST_NAME;
@@ -17,6 +18,7 @@ const hostName = process.env.HOST_NAME;
 configViewEngine(app);
 
 app.use('/', webRoutes);
+app.use('/v1/api', APIRouter);
 
 //test conection
 
