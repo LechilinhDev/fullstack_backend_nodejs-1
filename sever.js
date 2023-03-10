@@ -3,11 +3,15 @@ const app = express()
 const mongoose = require('mongoose')
 require('dotenv').config();
 // config req.body
+const fileUpload = require('express-fileupload');
 const connection = require('./src/config/database')
+// default options
+app.use(fileUpload());
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // for form data
 
 const configViewEngine = require('./src/config/viewEngine');
+
 const webRoutes = require('./src/routes/web');
 const APIRouter = require('./src/routes/api')
 // const path = require('path');
