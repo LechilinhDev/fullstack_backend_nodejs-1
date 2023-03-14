@@ -32,5 +32,20 @@ module.exports = {
             console.log(error);
             return null;
         }
+    },
+    getAllCustomerService: async () => {
+        try {
+            let data = await Customer.find({});
+            return data;
+        } catch (error) {
+            console.log('error get all user', error);
+            return null
+        }
+
+    },
+    updateCustomerById: async (dataCustomer) => {
+        let { id, name, address, phone, email, description } = dataCustomer;
+        let data = await Customer.updateOne({ _id: id }, { name, address, phone, email, description });
+        return data;
     }
 }
