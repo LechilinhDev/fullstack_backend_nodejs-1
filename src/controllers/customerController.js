@@ -1,4 +1,4 @@
-const { createCustomerService, createManyCustomerService, getAllCustomerService, updateCustomerById } = require('../services/customerServive');
+const { createCustomerService, createManyCustomerService, getAllCustomerService, updateCustomerById, deleteACustomer } = require('../services/customerServive');
 const { upLoadSingleFile } = require('../services/fileService')
 module.exports = {
     postCreateCustomerAPI: async (req, res) => {
@@ -59,6 +59,12 @@ module.exports = {
         // let { id, name, address, phone, email, description } = req.body;
         // let dataCustomer = { id, name, address, phone, email, description }
         let results = await updateCustomerById(req.body);
+        res.status(200).json({
+            data: results
+        })
+    },
+    deleteACustomerAPI: async (req, res) => {
+        let results = await deleteACustomer(req.body.id);
         res.status(200).json({
             data: results
         })

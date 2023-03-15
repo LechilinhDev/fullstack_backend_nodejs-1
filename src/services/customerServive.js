@@ -47,5 +47,9 @@ module.exports = {
         let { id, name, address, phone, email, description } = dataCustomer;
         let data = await Customer.updateOne({ _id: id }, { name, address, phone, email, description });
         return data;
+    },
+    deleteACustomer: async (id) => {
+        let data = await Customer.delete({ _id: id });
+        return data;
     }
 }
