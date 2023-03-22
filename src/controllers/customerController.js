@@ -1,4 +1,11 @@
-const { createCustomerService, createManyCustomerService, getAllCustomerService, updateCustomerById, deleteACustomer } = require('../services/customerServive');
+const { createCustomerService,
+    createManyCustomerService,
+    getAllCustomerService,
+    updateCustomerById,
+    deleteACustomer,
+    deleteManyService
+} = require('../services/customerServive');
+
 const { upLoadSingleFile } = require('../services/fileService')
 module.exports = {
     postCreateCustomerAPI: async (req, res) => {
@@ -49,11 +56,24 @@ module.exports = {
         })
     },
     getAllCustomerAPI: async (req, res) => {
-        let results = await getAllCustomerService();
-        res.status(200).json({
-            errorCode: 0,
-            data: results
-        })
+
+
+
+
+        if (req.query) {
+            let results = await getAllCustomerService(req, res);
+            res.status(200).json({
+                errorCode: 0,
+                data: results
+            })
+        } else {
+            let results = await getAllCustomerService();
+            res.status(200).json({
+                errorCode: 0,
+                data: results
+            })
+        }
+
     },
     updateCustomerAPI: async (req, res) => {
         // let { id, name, address, phone, email, description } = req.body;
@@ -66,6 +86,14 @@ module.exports = {
     deleteACustomerAPI: async (req, res) => {
         let results = await deleteACustomer(req.body.id);
         res.status(200).json({
+            data: results
+        })
+    },
+    deleteManyCustomerAPI: async (req, res) => {
+        let arrId = req.body.customers;
+        let results = await deleteManyService(arrId);
+        res.status(200).json({
+            erroCode: 0,
             data: results
         })
     }
