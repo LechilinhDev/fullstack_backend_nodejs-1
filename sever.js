@@ -51,7 +51,7 @@ app.use('/v1/api', APIRouter);
         collection.insertOne({ name: 'lechilinh2', age: 30, city: 'hcm' })
 
 
-        console.log('check document', collection);
+
         app.listen(port, hostName, () => {
             console.log(`Example app listening on port ${port}---${hostName}`)
         })

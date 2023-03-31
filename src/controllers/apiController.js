@@ -16,7 +16,7 @@ const createUserAPI = async (req, res) => {
         name,
         city
     }).then(result => {
-        console.log(result)
+        return result;
     })
     res.status(200).json({
         errorCode: 0,
